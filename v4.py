@@ -125,17 +125,17 @@ def hesapla():
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)  # Eğer negatifse sıfırlanır
 
         def gelir_vergisi_hesapla(kumulatif_matrah):
-    if kumulatif_matrah <= 158000:
-        vergi = kumulatif_matrah * 0.15
-    elif kumulatif_matrah <= 330000:
-        vergi = 23700 + (kumulatif_matrah - 158000) * 0.20
-    elif kumulatif_matrah <= 1200000:
-        vergi = 58100 + (kumulatif_matrah - 330000) * 0.27
-    elif kumulatif_matrah <= 4300000:
-        vergi = 293000 + (kumulatif_matrah - 1200000) * 0.35
-    else:
-        vergi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
-    return vergi
+            if kumulatif_matrah <= 158000:
+                vergi = kumulatif_matrah * 0.15
+            elif kumulatif_matrah <= 330000:
+                vergi = 23700 + (kumulatif_matrah - 158000) * 0.20
+            elif kumulatif_matrah <= 1200000:
+                vergi = 58100 + (kumulatif_matrah - 330000) * 0.27
+            elif kumulatif_matrah <= 4300000:
+                vergi = 293000 + (kumulatif_matrah - 1200000) * 0.35
+            else:
+                vergi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
+            return vergi
 
     kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah + gelir_vergisi_matrahi)
 toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
