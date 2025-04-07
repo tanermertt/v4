@@ -127,7 +127,8 @@ def hesapla():
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
         if damga_vergisi < 0:
             damga_vergisi = 0
-
+        son_yevmiyesi=sendika_aidatı
+        
         # Net Maaş
         devlete_odenen = sgk_primi + isssizlik_primi + toplam_vergi + damga_vergisi + sendika_aidati + yol_yardimi
 
