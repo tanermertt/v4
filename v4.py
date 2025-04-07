@@ -144,7 +144,7 @@ def hesapla():
 
 # Sonuçları Gösterme
 if st.button("Hesapla"):
-    net_maas = hesapla()
-    if net_maas:
+    net_maas, kazanclar_toplam = hesapla()
+    if net_maas is not None:
         st.subheader(f"Net Maaş: {net_maas:.2f} TL")
-        st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")
+        st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")  # Burada kazançları da gösteriyoruz
