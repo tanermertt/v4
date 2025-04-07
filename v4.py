@@ -170,3 +170,15 @@ def hesapla():
     except Exception as e:
         st.error(f"Hesaplama hatası: {str(e)}")
         return None
+
+        # Hesaplama ve sonuçları ekrana yazdırma
+if st.button("Hesapla"):
+    sonuc = hesapla()
+    if sonuc:
+        for key, value in sonuc.items():
+            if isinstance(value, dict):
+                st.subheader(key)
+                for sub_key, sub_value in value.items():
+                    st.write(f"{sub_key}: {sub_value:.2f}")
+            else:
+                st.write(f"{key}: {value:.2f}")
