@@ -11,6 +11,7 @@ ay_gunleri = {
 
 # Form elemanları
 grup = st.selectbox("Grup:", ["A", "B", "C", "D"])
+vardiya = st.selectbox("Vardiya Türü:", ["Tekli Vardiya", "İkili Vardiya", "Üçlü Vardiya"])
 ay_secimi = st.selectbox("Ay Seçimi:", list(ay_gunleri.keys()))
 kidem_yili = st.number_input("Kıdem Yılı 0-30:", min_value=0, max_value=30, value=25)
 imza_primi_yuzdesi = st.number_input("Üretime Dayalı Risk Primi (%):", min_value=0.0, max_value=10.0, value=6.0)
@@ -25,9 +26,7 @@ yol_yardimi = st.number_input("Ulaşım Yardımı (TL):", min_value=0.0, value=0
 evlilik_var = st.selectbox("Evli misiniz?", ["Evet", "Hayır"])
 es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
-vardiya = st.selectbox("Vardiya Türü:", ["Tekli Vardiya", "İkili Vardiya", "Üçlü Vardiya"])
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
-
 
 # Hesaplama Fonksiyonu
 def hesapla():
@@ -89,12 +88,56 @@ def hesapla():
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar + ekstra_prim + isveren_bes_sigorta + yillik_izin_kazanci + uretim_destek_primi
 
-        # Çıktı
-        st.write(f"Toplam Kazanç: {toplam_kazanc:.2f} TL")
+        # SGK Matrahı:
+        if es_calisiyor == "Evet":
+            sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
+        else:
+            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
+
+        # Gelir Vergisi Matrahı ve Hesaplaması:
+        sgk_primi = sgk_matrah * 0.14
+        isssizlik_primi = sgk_matrah * 0.01
+        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - (calisan_gun * 264)
+        gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)  # Eğer negatifse sıfırlanır
+
+        # Vergi dilimi
+        if ay_secimi in ["Ocak", "Şubat"]:
+            vergi_orani = 0.15
+        elif ay_secimi in ["Mart", "Nisan"]:
+            vergi_orani = 0.20
+        elif ay_secimi in ["Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım"]:
+            vergi_orani = 0.27
+        else:
+            vergi_orani = 0.35  # Aralık
+
+        # Vergi İstisnası
+        if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
+            istisna = 3315.60
+        elif ay_secimi == "Temmuz":
+            istisna = 4257.57
+        else:
+            istisna = 4420.80
+
+        # Gelir Vergisi hesaplaması
+        toplam_vergi = (gelir_vergisi_matrahi * vergi_orani) - istisna
+
+        # Damga Vergisi hesaplama
+        damga_vergisi_matrahi = (toplam_brut -(calisan_gun * 264))
+        damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
+        if damga_vergisi < 0:
+            damga_vergisi = 0
+
+        # Net Maaş
+        net_maas = toplam_kazanc - toplam_vergi
+
+        return net_maas
 
     except Exception as e:
-        st.error(f"Hata oluştu: {e}")
+        st.error(f"Hesaplama hatası: {str(e)}")
+        return None
 
-# Hesapla butonu
+# Sonuçları Gösterme
 if st.button("Hesapla"):
-    hesapla()
+    net_maas = hesapla()
+    if net_maas:
+        st.subheader(f"Net Maaş: {net_maas:.2f} TL")
