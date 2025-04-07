@@ -202,6 +202,6 @@ if st.button("Hesapla"):
             st.write(f"{prim}: {tutar:.2f} TL")
             
         st.subheader("Net Maaş")
-        st.write(f"Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
+        st.write(f"Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
         
         
