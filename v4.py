@@ -113,9 +113,9 @@ def hesapla():
 
        # SGK Matrahı:
         if es_calisiyor == "Evet":
-            sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
+            sgk_matrah = toplam_kazanc - ((cocuk_yardimi + yol_yardimi) + (calisan_gun * 158))
         else:
-            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi ) + (calisan_gun * 158) 
+            sgk_matrah = toplam_kazanc - ((aile_yardimi + cocuk_yardimi + yol_yardimi ) + (calisan_gun * 158))
         
         # SGK ve İşsizlik Primi Hesaplama:
         sgk_primi = toplam_kazanc * 0.14
