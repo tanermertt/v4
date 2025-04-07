@@ -115,7 +115,7 @@ def hesapla():
         if es_calisiyor == "Evet":
             sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
         else:
-            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi + (calisan_gun * 158)   
+            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi ) + (calisan_gun * 158)   
         
         
         # SGK Matrahı ve Gelir Vergisi Matrahı ve Hesaplaması:
