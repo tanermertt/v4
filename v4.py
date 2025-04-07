@@ -147,7 +147,7 @@ def hesapla():
         else:
             istisna = 4420.80
         
-        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah + gelir_vergisi_matrahi)
+        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah )
         toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
         toplam_vergi = max(0, toplam_vergi)
 
