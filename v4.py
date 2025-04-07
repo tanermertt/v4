@@ -115,12 +115,6 @@ def hesapla():
         else:
             sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
 
-        # Gelir Vergisi Matrahı ve Hesaplaması:
-        sgk_primi = sgk_matrah * 0.14
-        isssizlik_primi = sgk_matrah * 0.01
-        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - son_yevmiyesi - isveren_bes_sigorta - (calisan_gun * 264) - ( engelli_indirimi * vergi_orani )
-        gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)  # Eğer negatifse sıfırlanır
-
         # Vergi dilimi
         if ay_secimi in ["Ocak", "Şubat"]:
             vergi_orani = 0.15
@@ -130,7 +124,17 @@ def hesapla():
             vergi_orani = 0.27
         else:
             vergi_orani = 0.35  # Aralık
+                  
+            
+        
+        
+        # Gelir Vergisi Matrahı ve Hesaplaması:
+        sgk_primi = sgk_matrah * 0.14
+        isssizlik_primi = sgk_matrah * 0.01
+        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - son_yevmiyesi - isveren_bes_sigorta - (calisan_gun * 264) - ( engelli_indirimi * vergi_orani )
+        gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)  # Eğer negatifse sıfırlanır
 
+        
         # Vergi İstisnası
         if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
             istisna = 3315.60
