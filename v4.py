@@ -112,7 +112,7 @@ def hesapla():
         toplam_kazanc = kazanclar_toplam + yardimlar
 
         # SGK Matrahı:
-        if evlilik_var == "Evet":
+            if evlilik_var == "Evet":
             if es_calisiyor == "Evet":
                 sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
             else:
