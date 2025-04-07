@@ -110,7 +110,7 @@ def hesapla():
         
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar
-try:
+    try:
         # Kodun geri kalanı
         if evlilik_var == "Evet":
         if es_calisiyor == "Evet":
