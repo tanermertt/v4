@@ -143,6 +143,14 @@ def hesapla():
         toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
         toplam_vergi = max(0, toplam_vergi)
 
+        # Vergi İstisnası
+        if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
+            istisna = 3315.60
+        elif ay_secimi == "Temmuz":
+            istisna = 4257.57
+        else:
+            istisna = 4420.80
+       
         # Damga Vergisi hesaplama
         damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
