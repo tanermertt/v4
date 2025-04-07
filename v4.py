@@ -123,13 +123,15 @@ def hesapla():
         toplam_vergi = (gelir_vergisi_matrahi * vergi_orani) - istisna
 
         # Damga Vergisi hesaplama
-        damga_vergisi_matrahi = (toplam_brut -(calisan_gun * 264))
+        damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
         if damga_vergisi < 0:
             damga_vergisi = 0
 
         # Net Maaş
-        net_maas = toplam_kazanc - toplam_vergi
+        devlete_odenen = sgk_primi + isssizlik_primi + toplam_vergi + damga_vergisi + sendika_aidati + yol_yardimi
+
+        net_maas = toplam_kazanc - devlete_odenen
 
         return net_maas
 
