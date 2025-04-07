@@ -127,16 +127,16 @@ def hesapla():
 
         def gelir_vergisi_hesapla(kumulatif_matrah):
             if kumulatif_matrah <= 158000:
-                gelir_vergi = kumulatif_matrah * 0.15
+                gelir_vergisi = kumulatif_matrah * 0.15
             elif kumulatif_matrah <= 330000:
-                gelir_vergi = 23700 + (kumulatif_matrah - 158000) * 0.20
+                gelir_vergisi = 23700 + (kumulatif_matrah - 158000) * 0.20
             elif kumulatif_matrah <= 1200000:
-                gelir_vergi = 58100 + (kumulatif_matrah - 330000) * 0.27
+                gelir_vergisi = 58100 + (kumulatif_matrah - 330000) * 0.27
             elif kumulatif_matrah <= 4300000:
-                gelir_vergi = 293000 + (kumulatif_matrah - 1200000) * 0.35
+                gelir_vergisi = 293000 + (kumulatif_matrah - 1200000) * 0.35
             else:
-                gelir_vergi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
-            return gelir_vergi
+                gelir_vergisi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
+            return gelir_vergisi
 
         # Vergi İstisnası
         if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
@@ -147,7 +147,7 @@ def hesapla():
             istisna = 4420.80
 
         kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah)
-        toplam_vergi = gelir_vergi - kumule_gelir_vergisi - istisna
+        toplam_vergi = gelir_vergisi - kumule_gelir_vergisi - istisna
         toplam_vergi = max(0, toplam_vergi)
 
         # Damga Vergisi hesaplama
