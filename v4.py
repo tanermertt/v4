@@ -162,27 +162,40 @@ def hesapla():
             "Kazançlar Toplamı": kazanclar_toplam,
             "Yardımlar Toplamı": yardimlar,
             "Yardımlar Özeti": yardimlar_ozeti,
-            "SGK Matrahı": sgk_matrah,
-            "Gelir Vergisi Matrahı": gelir_vergisi_matrahi,
-            "Damga Vergisi Matrahı": damga_vergisi_matrahi,
-            "SGK Primi": sgk_primi,
-            "İşsizlik Primi": isssizlik_primi,
-            "Gelir Vergisi": toplam_vergi,
-            "Damga Vergisi": damga_vergisi
+            "Matrahlar": {
+                "Toplam Kazanç": toplam_kazanc,
+                "SGK Matrahı": sgk_matrah,
+                "Gelir Vergisi Matrahı": gelir_vergisi_matrahi,
+                "Damga Vergisi Matrahı": damga_vergisi_matrahi
+            },
+            "Devlete Ödenenler": {
+                "SGK Primi": sgk_primi,
+                "İşsizlik Primi": isssizlik_primi,
+                "Gelir Vergisi": toplam_vergi,
+                "Damga Vergisi": damga_vergisi,
+                "Sendika Aidatı (Son Yevmiye)": son_yevmiyesi
+            }
         }
 
     except Exception as e:
         st.error(f"Hesaplama hatası: {str(e)}")
         return None
 
-        # Hesaplama ve sonuçları ekrana yazdırma
+# Hesaplama butonuna basıldığında sonucu göster
 if st.button("Hesapla"):
-    sonuc = hesapla()
-    if sonuc:
-        for key, value in sonuc.items():
-            if isinstance(value, dict):
-                st.subheader(key)
-                for sub_key, sub_value in value.items():
-                    st.write(f"{sub_key}: {sub_value:.2f}")
-            else:
-                st.write(f"{key}: {value:.2f}")
+    sonuclar = hesapla()
+    if sonuclar:
+        st.subheader("Yardımlar Özeti")
+        for yardim, tutar in sonuclar["Yardımlar Özeti"].items():
+            st.write(f"{yardim}: {tutar:.2f} TL")
+        
+        st.subheader("Matrahlar")
+        for matrah, tutar in sonuclar["Matrahlar"].items():
+            st.write(f"{matrah}: {tutar:.2f} TL")
+        
+        st.subheader("Devlete Ödenenler")
+        for odeme, tutar in sonuclar["Devlete Ödenenler"].items():
+            st.write(f"{odeme}: {tutar:.2f} TL")
+        
+        st.subheader("Net Maaş")
+        st.write(f"{sonuclar['Net Maaş']:.2f} TL")
