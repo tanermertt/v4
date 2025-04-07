@@ -147,5 +147,4 @@ if st.button("Hesapla"):
     net_maas = hesapla()
     if net_maas:
         st.subheader(f"Net Maaş: {net_maas:.2f} TL")
-    kazanclar_toplam = hesapla()    
         st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")
