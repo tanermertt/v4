@@ -196,10 +196,12 @@ if st.button("Hesapla"):
         st.subheader("Matrahlar")
         for matrah, tutar in sonuclar["Matrahlar"].items():
             st.write(f"{matrah}: {tutar:.2f} TL")
-        
-        st.subheader("Net Maaş")
-        st.write(f"Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
-        
+
         st.subheader("Devlete Ödenenler")
         for prim, tutar in sonuclar["Devlete Ödenenler"].items():
             st.write(f"{prim}: {tutar:.2f} TL")
+            
+        st.subheader("Net Maaş")
+        st.write(f"Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
+        
+        
