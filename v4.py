@@ -122,7 +122,7 @@ def hesapla():
         isssizlik_primi = toplam_kazanc * 0.01
 
         # Gelir Vergisi Hesaplama:
-        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - son_yevmiyesi - isveren_bes_sigorta - (calisan_gun * 264) - engelli_indirimi 
+        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - (yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta) - (calisan_gun * 264) - engelli_indirimi 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)
 
         def gelir_vergisi_hesapla(kumulatif_matrah):
@@ -147,7 +147,7 @@ def hesapla():
             istisna = 4420.80
 
         kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah)
-        toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
+        toplam_vergi = vergi - kumule_gelir_vergisi - istisna
         toplam_vergi = max(0, toplam_vergi)
 
         # Damga Vergisi hesaplama
