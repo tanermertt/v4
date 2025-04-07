@@ -149,9 +149,7 @@ def hesapla():
             istisna = 4257.57
         else:
             istisna = 4420.80
-
-        # Gelir Vergisi hesaplaması
-        toplam_vergi = (gelir_vergisi_matrahi * vergi_orani) - istisna 
+      
 
         # Damga Vergisi hesaplama
         damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
