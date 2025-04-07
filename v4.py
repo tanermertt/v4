@@ -89,6 +89,23 @@ def hesapla():
         yardimlar = (sorumluluk_zammi + yakacak_yardimi + is_guclugu_primi + aile_yardimi + cocuk_yardimi + yemek_yardimi + sosyal_yardim +
                      ise_devam_tesvik_primi + ekstra_prim + brüt_ikramiye + uretim_destek_primi + yillik_izin_kazanci + yol_yardimi_toplam)
 
+        # Yardımların Özeti
+        yardimlar_ozeti = {
+            "Sorumluluk Zammı": sorumluluk_zammi,
+            "Yakacak Yardımı": yakacak_yardimi,
+            "İş Gücü Primi": is_guclugu_primi,
+            "Aile Yardımı": aile_yardimi,
+            "Çocuk Yardımı": cocuk_yardimi,
+            "Yemek Yardımı": yemek_yardimi,
+            "Sosyal Yardım": sosyal_yardim,
+            "İşe Devam Teşvik Primi": ise_devam_tesvik_primi,
+            "Ekstra Prim": ekstra_prim,
+            "İkramiye": brüt_ikramiye,
+            "Üretim Destek Primi": uretim_destek_primi,
+            "Yıllık İzin Kazancı": yillik_izin_kazanci,
+            "Yol Yardımı": yol_yardimi_toplam
+        }
+        
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar
 
@@ -136,17 +153,20 @@ def hesapla():
 
         net_maas = toplam_kazanc - devlete_odenen - ozel_kesinti
 
-        return net_maas
+        return {
+            "Net Maaş": net_maas,
+            "Kazançlar Toplamı": kazanclar_toplam,
+            "Yardımlar Toplamı": yardimlar,
+            "Yardımlar Özeti": yardimlar_ozeti,
+            "SGK Matrahı": sgk_matrah,
+            "Gelir Vergisi Matrahı": gelir_vergisi_matrahi,
+            "Damga Vergisi Matrahı": damga_vergisi_matrahi,
+            "SGK Primi": sgk_primi,
+            "İşsizlik Primi": isssizlik_primi,
+            "Gelir Vergisi": toplam_vergi,
+            "Damga Vergisi": damga_vergisi
+        }
 
     except Exception as e:
         st.error(f"Hesaplama hatası: {str(e)}")
         return None
-
-# Sonuçları Gösterme
-if st.button("Hesapla"):
-    net_maas, kazanclar_toplam = hesapla()
-    if net_maas is not None and kazanclar_toplam is not None:
-        st.subheader(f"Net Maaş: {net_maas:.2f} TL")
-        st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")  # Burada kazançları da gösteriyoruz
-    else:
-        st.error("Hesaplama sırasında bir hata oluştu. Lütfen tüm verileri kontrol edin.")
