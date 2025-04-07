@@ -110,9 +110,8 @@ def hesapla():
         
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar
-
 try:
-    # Kodun geri kalan kısmı
+        # Kodun geri kalanı
     if evlilik_var == "Evet":
         if es_calisiyor == "Evet":
             sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
@@ -123,6 +122,8 @@ try:
 
 except Exception as e:
     st.error(f"Hata: {str(e)}")
+
+
 
 
         # SGK Primi ve işsizlik primi Hesaplama:
