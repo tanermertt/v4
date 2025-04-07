@@ -110,25 +110,10 @@ def hesapla():
         
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar
-    try:
-        # Kodun geri kalanı
-        if evlilik_var == "Evet":
-        if es_calisiyor == "Evet":
-            sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
-        else:
-            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi) + (calisan_gun * 158)
-        else:
-            sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
 
-except Exception as e:
-    st.error(f"Hata: {str(e)}")
-
-
-
-
-        # SGK Primi ve işsizlik primi Hesaplama:
-        sgk_primi = sgk_matrah * 0.14
-        isssizlik_primi = sgk_matrah * 0.01
+        # SGK ve İşsizlik Primi Hesaplama:
+        sgk_primi = toplam_kazanc * 0.14
+        isssizlik_primi = toplam_kazanc * 0.01
 
         # Gelir Vergisi Hesaplama:
         gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - son_yevmiyesi - isveren_bes_sigorta - (calisan_gun * 264) - engelli_indirimi 
@@ -148,28 +133,25 @@ except Exception as e:
             return vergi
 
         # Vergi İstisnası
-            if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
-                istisna = 3315.60
-            elif ay_secimi == "Temmuz":
-                istisna = 4257.57
-            else:
-                istisna = 4420.80
-        
-        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah )
+        if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
+            istisna = 3315.60
+        elif ay_secimi == "Temmuz":
+            istisna = 4257.57
+        else:
+            istisna = 4420.80
+
+        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah)
         toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
         toplam_vergi = max(0, toplam_vergi)
 
-
-       
         # Damga Vergisi hesaplama
         damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
-            if damga_vergisi < 0:
-                damga_vergisi = 0
-                      
+        if damga_vergisi < 0:
+            damga_vergisi = 0
+
         # Net Maaş
         devlete_odenen = sgk_primi + isssizlik_primi + toplam_vergi + damga_vergisi + son_yevmiyesi + yol_yardimi
-
         net_maas = toplam_kazanc - devlete_odenen - ozel_kesinti
 
         return {
@@ -207,10 +189,10 @@ if st.button("Hesapla"):
         st.subheader("Matrahlar")
         for matrah, tutar in sonuclar["Matrahlar"].items():
             st.write(f"{matrah}: {tutar:.2f} TL")
-            
-        st.subheader("Devlete Ödenenler")
-        for odeme, tutar in sonuclar["Devlete Ödenenler"].items():
-            st.write(f"{odeme}: {tutar:.2f} TL")
-
+        
         st.subheader("Net Maaş")
         st.write(f"Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
+        
+        st.subheader("Devlete Ödenenler")
+        for prim, tutar in sonuclar["Devlete Ödenenler"].items():
+            st.write(f"{prim}: {tutar:.2f} TL")
