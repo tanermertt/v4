@@ -29,6 +29,7 @@ es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
 engelli_indirimi = st.selectbox("Engel İndirimi (TL):", [0, 2400, 5700, 9900])
+ozel_kesinti = st.number_input("ilaç , bağış , vb (TL):", min_value=0.0, value=0.0)
 
 # Hesaplama Fonksiyonu
 def hesapla():
@@ -133,7 +134,7 @@ def hesapla():
         # Net Maaş
         devlete_odenen = sgk_primi + isssizlik_primi + toplam_vergi + damga_vergisi + son_yevmiyesi + yol_yardimi
 
-        net_maas = toplam_kazanc - devlete_odenen
+        net_maas = toplam_kazanc - devlete_odenen - ozel_kesinti
 
         return net_maas
 
