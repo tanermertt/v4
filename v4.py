@@ -127,6 +127,8 @@ def hesapla():
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
         if damga_vergisi < 0:
             damga_vergisi = 0
+        
+       # Sendika aidatı hesaplama 
         son_yevmiyesi=sendika_aidatı
         
         # Net Maaş
