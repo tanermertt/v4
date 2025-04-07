@@ -142,9 +142,15 @@ def hesapla():
         st.error(f"Hesaplama hatası: {str(e)}")
         return None
 
-# Sonuçları Gösterme
-if st.button("Hesapla"):
-    net_maas, kazanclar_toplam = hesapla()
-    if net_maas is not None:
-        st.subheader(f"Net Maaş: {net_maas:.2f} TL")
-        st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")  # Burada kazançları da gösteriyoruz
+# Sonuçları göster
+        st.success(f"💰 Bankaya Yatan Net Maaş: **{net_maas:,.2f} TL**")
+        st.write("---")
+        st.subheader("📊 Detaylar")
+        st.write(f"Toplam Brüt Maaş: {toplam_brut:,.2f} TL")
+        st.write(f"SGK Matrahı: {sgk_matrah:,.2f} TL")
+        st.write(f"Gelir Vergisi Matrahı: {gelir_vergisi_matrahi:,.2f} TL")
+        st.write(f"Toplam Vergi: {toplam_vergi:,.2f} TL")
+        st.write(f"Damga Vergisi: {damga_vergisi:,.2f} TL")
+
+    except Exception as e:
+        st.error(f"Hata oluştu: {e}")
