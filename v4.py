@@ -29,7 +29,7 @@ es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
 engelli_indirimi = st.selectbox("Engel İndirimi (TL):", [0, 2400, 5700, 9900])
-ozel_kesinti = st.number_input("ilaç , bağış , vb (TL):", min_value=0.0, value=0.0)
+ozel_kesinti = st.number_input("ilaç , bağış , vb kesintiler (TL):", min_value=0.0, value=0.0)
 
 # Hesaplama Fonksiyonu
 def hesapla():
@@ -147,3 +147,4 @@ if st.button("Hesapla"):
     net_maas = hesapla()
     if net_maas:
         st.subheader(f"Net Maaş: {net_maas:.2f} TL")
+        st.subheader(f"Kazançlar: {kazanclar_toplam:.2f} TL")
