@@ -74,7 +74,7 @@ def hesapla():
         yol_yardimi_toplam = yol_yardimi
 
         # İkramiye hesaplama
-        brüt_ikramiye = son_yevmiyesi * 19
+        brüt_ikramiye = son_yevmiyesi * ikramiye
 
         # Kazançlar
         main_kazanc = son_yevmiyesi * toplam_gun
