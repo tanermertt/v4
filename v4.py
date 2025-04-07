@@ -118,8 +118,8 @@ def hesapla():
             sgk_matrah = toplam_kazanc - ((aile_yardimi + cocuk_yardimi + yol_yardimi ) + (calisan_gun * 158))
         
         # SGK ve İşsizlik Primi Hesaplama:
-        sgk_primi = toplam_kazanc * 0.14
-        isssizlik_primi = toplam_kazanc * 0.01
+        sgk_primi = sgk_matrah * 0.14
+        isssizlik_primi = sgk_matrah * 0.01
 
         # Gelir Vergisi Hesaplama:
         gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - (yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta) - (calisan_gun * 264) - engelli_indirimi 
