@@ -143,6 +143,7 @@ def hesapla():
         return None
 
 # Sonuçları göster
+        if st.button("Hesapla"):
         st.success(f"💰 Bankaya Yatan Net Maaş: **{net_maas:,.2f} TL**")
         st.write("---")
         st.subheader("📊 Detaylar")
