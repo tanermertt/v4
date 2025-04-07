@@ -139,10 +139,6 @@ def hesapla():
                 vergi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
             return vergi
 
-        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah + gelir_vergisi_matrahi)
-        toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
-        toplam_vergi = max(0, toplam_vergi)
-
         # Vergi İstisnası
         if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
             istisna = 3315.60
@@ -150,6 +146,12 @@ def hesapla():
             istisna = 4257.57
         else:
             istisna = 4420.80
+        
+        kumulatif_vergi = gelir_vergisi_hesapla(kumulatif_matrah + gelir_vergisi_matrahi)
+        toplam_vergi = kumulatif_vergi - kumule_gelir_vergisi - istisna
+        toplam_vergi = max(0, toplam_vergi)
+
+
        
         # Damga Vergisi hesaplama
         damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
