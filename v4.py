@@ -11,20 +11,20 @@ ay_gunleri = {
 
 # Form elemanları
 grup = st.selectbox("Grup:", ["A", "B", "C", "D"])
+ay_secimi = st.selectbox("Ay Seçimi:", list(ay_gunleri.keys()))
 kidem_yili = st.number_input("Kıdem Yılı 0-30:", min_value=0, max_value=30, value=25)
 imza_primi_yuzdesi = st.number_input("Üretime Dayalı Risk Primi (%):", min_value=0.0, max_value=10.0, value=6.0)
 calisan_gun = st.number_input("Çalışılan Günler:", min_value=0, max_value=31, value=20)
 tatil_gun = st.number_input("Çalışılmayan Günler:", min_value=0, max_value=31, value=10)
+yillik_izin = st.number_input("Yıllık İzin Gün Sayısı:", min_value=0, value=0)
 fazla_mesai_saat = st.number_input("Fazla Mesai Saat:", min_value=0.0, max_value=24.0, value=0.0)
 fazla_mesai_gun = st.number_input("Fazla Mesai Gün:", min_value=0, max_value=31, value=0)
 gece_farki_saat = st.number_input("Gece Çalışması Saat:", min_value=0.0, max_value=24.0, value=0.0)
 ekstra_prim = st.number_input("Ekstra Prim:", min_value=0.0, value=0.0)
 yol_yardimi = st.number_input("Ulaşım Yardımı (TL):", min_value=0.0, value=0.0)
-ay_secimi = st.selectbox("Ay Seçimi:", list(ay_gunleri.keys()))
 evlilik_var = st.selectbox("Evli misiniz?", ["Evet", "Hayır"])
 es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
-yillik_izin = st.number_input("Yıllık İzin Gün Sayısı:", min_value=0, value=0)
 vardiya = st.selectbox("Vardiya Türü:", ["Tekli Vardiya", "İkili Vardiya", "Üçlü Vardiya"])
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
 
