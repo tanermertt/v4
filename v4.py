@@ -22,11 +22,12 @@ ekstra_prim = st.number_input("Ekstra Prim:", min_value=0.0, value=0.0)
 yol_yardimi = st.number_input("Ulaşım Yardımı (TL):", min_value=0.0, value=0.0)
 ay_secimi = st.selectbox("Ay Seçimi:", list(ay_gunleri.keys()))
 evlilik_var = st.selectbox("Evli misiniz?", ["Evet", "Hayır"])
+es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
 yillik_izin = st.number_input("Yıllık İzin Gün Sayısı:", min_value=0, value=0)
 vardiya = st.selectbox("Vardiya Türü:", ["Tekli Vardiya", "İkili Vardiya", "Üçlü Vardiya"])
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
-es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
+
 
 # Hesaplama Fonksiyonu
 def hesapla():
