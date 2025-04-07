@@ -112,13 +112,13 @@ def hesapla():
         toplam_kazanc = kazanclar_toplam + yardimlar
 try:
         # Kodun geri kalanı
-    if evlilik_var == "Evet":
+        if evlilik_var == "Evet":
         if es_calisiyor == "Evet":
             sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
         else:
             sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi) + (calisan_gun * 158)
-    else:
-        sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
+        else:
+            sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
 
 except Exception as e:
     st.error(f"Hata: {str(e)}")
