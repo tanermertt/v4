@@ -30,8 +30,9 @@ cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evli
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
 engelli_indirimi = st.selectbox("Engel İndirimi (TL):", [0, 2400, 5700, 9900])
 ozel_kesinti = st.number_input("ilaç , bağış , vb kesintiler (TL):", min_value=0.0, value=0.0)
-kumule_vergi_matrah = st.number_input("Kümüle Vergi Matrahı (TL):", min_value=0.0, value=0.0) 
+kumule_vergi_matrahi = st.number_input("Kümüle Vergi Matrahı (TL):", min_value=0.0, value=0.0) 
 kumule_gelir_vergisi = st.number_input("Kümüle Gelir Vergisi (TL):", min_value=0.0, value=0.0)
+
 # Hesaplama Fonksiyonu
 def hesapla():
     try:
@@ -114,28 +115,32 @@ def hesapla():
         if es_calisiyor == "Evet":
             sgk_matrah = toplam_kazanc - (cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
         else:
-            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi + (calisan_gun * 158))
-
-        # Vergi dilimi
-        if ay_secimi in ["Ocak", "Şubat"]:
-            vergi_orani = 0.15
-        elif ay_secimi in ["Mart", "Nisan"]:
-            vergi_orani = 0.20
-        elif ay_secimi in ["Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım"]:
-            vergi_orani = 0.27
-        else:
-            vergi_orani = 0.35  # Aralık
-                  
-            
+            sgk_matrah = toplam_kazanc - (aile_yardimi + cocuk_yardimi + yol_yardimi + (calisan_gun * 158)   
         
         
-        # Gelir Vergisi Matrahı ve Hesaplaması:
+        # SGK Matrahı ve Gelir Vergisi Matrahı ve Hesaplaması:
         sgk_primi = sgk_matrah * 0.14
         isssizlik_primi = sgk_matrah * 0.01
         gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - yol_yardimi - cocuk_yardimi - son_yevmiyesi - isveren_bes_sigorta - (calisan_gun * 264) - engelli_indirimi 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)  # Eğer negatifse sıfırlanır
 
-        
+        def gelir_vergisi_hesapla(kumulatif_matrah):
+    if kumulatif_matrah <= 158000:
+        vergi = kumulatif_matrah * 0.15
+    elif kumulatif_matrah <= 330000:
+        vergi = 23700 + (kumulatif_matrah - 158000) * 0.20
+    elif kumulatif_matrah <= 1200000:
+        vergi = 58100 + (kumulatif_matrah - 330000) * 0.27
+    elif kumulatif_matrah <= 4300000:
+        vergi = 293000 + (kumulatif_matrah - 1200000) * 0.35
+    else:
+        vergi = 1378000 + (kumulatif_matrah - 4300000) * 0.40
+    return vergi
+
+
+
+
+                             
         # Vergi İstisnası
         if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
             istisna = 3315.60
