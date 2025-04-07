@@ -87,7 +87,7 @@ def hesapla():
                      ise_devam_tesvik_primi + ekstra_prim + brüt_ikramiye + uretim_destek_primi + yillik_izin_kazanci + yol_yardimi_toplam)
 
         # Toplam Kazançlar
-       toplam_kazanc = kazanclar_toplam + yardimlar
+        toplam_kazanc = kazanclar_toplam + yardimlar
 
         # SGK Matrahı:
         if es_calisiyor == "Evet":
