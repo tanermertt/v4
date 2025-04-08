@@ -67,7 +67,8 @@ def hesapla():
         # Sabit yardımlar
         aile_yardimi = 2301.54 if evlilik_var == "Evet" else 0
         cocuk_yardimi = cocuk_sayisi * 253.14
-        yemek_yardimi = calisan_gun * 330.98
+        yemek_yardimi = calisan_gun * 66.98
+        yemek_yardimi_gvi = calisan_gun * 264
         sosyal_yardim = 3846.71
         sorumluluk_zammi = 6525.78
         yakacak_yardimi = 3309.76
@@ -88,7 +89,7 @@ def hesapla():
         yillik_izin_kazanci = yillik_izin * (son_yevmiyesi * 0.35)
 
         # Yardımlar
-        yardimlar = (sorumluluk_zammi + yakacak_yardimi + is_guclugu_primi + aile_yardimi + cocuk_yardimi + yemek_yardimi + sosyal_yardim +
+        yardimlar = (sorumluluk_zammi + yakacak_yardimi + is_guclugu_primi + aile_yardimi + cocuk_yardimi + yemek_yardimi + yemek_yardimi_gvi + sosyal_yardim +
                      ise_devam_tesvik_primi + ekstra_prim + brüt_ikramiye + uretim_destek_primi + yillik_izin_kazanci + yol_yardimi_toplam)
 
         # Yardımların Özeti
@@ -99,6 +100,7 @@ def hesapla():
             "Aile Yardımı": aile_yardimi,
             "Çocuk Yardımı": cocuk_yardimi,
             "Yemek Yardımı": yemek_yardimi,
+            "Yemek Yardımı GVİ": yemek_yardimi_gvi,
             "Sosyal Yardım": sosyal_yardim,
             "İşe Devam Teşvik Primi": ise_devam_tesvik_primi,
             "Ekstra Prim": ekstra_prim,
@@ -125,8 +127,7 @@ def hesapla():
         issizlik_primi = sgk_matrah * 0.01
 
         # Gelir Vergisi Hesaplama:
-        gelir_vergisi_yemek_istisna = calisan_gun * 264
-        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + issizlik_primi + yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta + gelir_vergisi_yemek_istisna + engelli_indirimi ) 
+        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + issizlik_primi + yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta + yemek_yardimi_gvi + engelli_indirimi ) 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)
 
         kumulatif_matrah = kumulatif_matrah1 + gelir_vergisi_matrahi
@@ -146,18 +147,19 @@ def hesapla():
 
         # Vergi İstisnası
         if ay_secimi in ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran"]:
-            istisna = 3315.60
+            asgari_ucret_gv_istisna = 3315.60
         elif ay_secimi == "Temmuz":
-            istisna = 4257.57
+            asgari_ucret_gv_istisna = 4257.57
         else:
-            istisna = 4420.80
+            asgari_ucret_gv_istisna = 4420.80
+        
         ay_sirasi = {
             "Ocak": 1, "Şubat": 2, "Mart": 3, "Nisan": 4, "Mayıs": 5, "Haziran": 6,
             "Temmuz": 7, "Ağustos": 8, "Eylül": 9, "Ekim": 10, "Kasım": 11, "Aralık": 12
             }
         ay_sayısı = ay_sirasi[ay_secimi]
         
-        toplam_vergi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - istisna * ay_sayısı
+        toplam_vergi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - ( asgari_ucret_gv_istisna * ay_sayısı )
 
         toplam_vergi = max(0, toplam_vergi)
 
