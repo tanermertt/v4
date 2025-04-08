@@ -170,8 +170,8 @@ def hesapla():
             damga_vergisi = 0
 
         # Net Maaş
-        devlete_odenen = sgk_primi + issizlik_primi + toplam_vergi + damga_vergisi + son_yevmiyesi + yol_yardimi
-        net_maas = toplam_kazanc - devlete_odenen - ozel_kesinti
+        devlete_odenen_ucretler = sgk_primi + issizlik_primi + toplam_vergi + damga_vergisi + yol_yardimi
+        net_maas = toplam_kazanc - devlete_odenen_ucretler - son_yevmiyesi -ozel_kesinti
 
         return {
             "Net Maaş": net_maas,
@@ -209,8 +209,8 @@ if st.button("Hesapla"):
         for matrah, tutar in sonuclar["Matrahlar"].items():
             st.write(f"{matrah}: {tutar:.2f} TL")
                         
-        st.subheader("Devlete Ödenenler")
-        for prim, tutar in sonuclar["Devlete Ödenenler"].items():
+        st.subheader("Devlete Ödenen Ücretler")
+        for prim, tutar in sonuclar["Devlete Ödenen Ücretler"].items():
             st.write(f"{prim}: {tutar:.2f} TL")
             
         st.subheader("Net Maaş")
