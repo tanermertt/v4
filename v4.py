@@ -204,24 +204,7 @@ if st.button("Hesapla"):
         st.subheader("Matrahlar")
         for matrah, tutar in sonuclar["Matrahlar"].items():
             st.write(f"{matrah}: {tutar:.2f} TL")
-        
-        st.subheader("Matrahlar")
-for matrah, tutar in sonuclar["Matrahlar"].items():
-    if matrah == "Toplam Kazanç":
-        st.write(f"{matrah}: {tutar:.2f} TL")
-        st.write("  - Toplam kazanç: Çalışan günleri, fazla mesai, gece farkı, üretim destek primi, ikramiye, vb. dahil.")
-    elif matrah == "SGK Matrahı":
-        st.write(f"{matrah}: {tutar:.2f} TL")
-        st.write("  - SGK matrahı: İşçi ve işveren BES, yaşam sigortası, yol yardımı, çocuk yardımı ve aile yardımı gibi öğelerden düşülür.")
-    elif matrah == "Gelir Vergisi Matrahı":
-        st.write(f"{matrah}: {tutar:.2f} TL")
-        st.write("  - Gelir vergisi matrahı: SGK primi, işsizlik primi, BES, sigorta, yol yardımı, çocuk yardımı, yıllık izin ve bazı diğer istisnalar düşülür.")
-    elif matrah == "Damga Vergisi Matrahı":
-        st.write(f"{matrah}: {tutar:.2f} TL")
-        st.write("  - Damga vergisi matrahı: Toplam kazançtan yol yardımı ve bazı belirli yardımlar çıkarılır.")
-    else:
-        st.write(f"{matrah}: {tutar:.2f} TL")
-        
+                        
         st.subheader("Devlete Ödenenler")
         for prim, tutar in sonuclar["Devlete Ödenenler"].items():
             st.write(f"{prim}: {tutar:.2f} TL")
