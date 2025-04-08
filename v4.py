@@ -212,7 +212,7 @@ if st.button("Hesapla"):
             st.write(f"{matrah}: {tutar:.2f} TL")
                         
         st.subheader("Devlete Ödenen Ücretler")
-        for prim, tutar in sonuclar["Devlete Ödenen Ücretler"].items():
+        for prim, tutar in sonuclar["Devlete Ödenenler"].items():
             st.write(f"{prim}: {tutar:.2f} TL")
             
         st.subheader("Net Maaş")
