@@ -210,5 +210,5 @@ if st.button("Hesapla"):
             st.write(f"{prim}: {tutar:.2f} TL")
             
         st.subheader("Net Maaş")
-        st.markdown(f"<h3 style='color:red; font-size:30px;'>Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL</h3>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='color:red; font-size:30px;'>💰 Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} ₺</h3>", unsafe_allow_html=True)
      
