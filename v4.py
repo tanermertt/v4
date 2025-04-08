@@ -17,7 +17,6 @@ kidem_yili = st.slider("Kıdem Yılı (0-30):", 0, 30, 25)
 imza_primi_yuzdesi = st.selectbox("Üretime Dayalı Risk Primi,Hakediş Primi (%):", [0, 3, 4, 6])
 calisan_gun = st.number_input("Çalışılan Günler:", min_value=0, max_value=31, value=20)
 tatil_gun = st.number_input("Çalışılmayan Günler:", min_value=0, max_value=31, value=10)
-
 yillik_izin = st.number_input("Yıllık İzin Gün Sayısı:", min_value=0, value=0)
 fazla_mesai_saat = st.number_input("Fazla Mesai Saat:", min_value=0.0, max_value=24.0, value=0.0)
 fazla_mesai_gun = st.number_input("Fazla Mesai Gün:", min_value=0, max_value=31, value=0)
