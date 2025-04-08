@@ -158,7 +158,7 @@ def hesapla():
         toplam_vergi = max(0, toplam_vergi)
 
         # Damga Vergisi hesaplama
-        damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264))
+        damga_vergisi_matrahi = (toplam_kazanc -(calisan_gun * 264) - yol_yardimi )
         damga_vergisi = (damga_vergisi_matrahi * 0.00759) - 197.38
         if damga_vergisi < 0:
             damga_vergisi = 0
