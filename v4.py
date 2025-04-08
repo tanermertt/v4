@@ -193,24 +193,7 @@ def hesapla():
         st.error(f"Hesaplama hatası: {str(e)}")
         return None
 
-# Hesaplama butonuna basıldığında sonucu göster
-if st.button("Hesapla"):
-    sonuclar = hesapla()
-    if sonuclar:
-        st.subheader("Yardımlar Özeti")
-        for yardim, tutar in sonuclar["Yardımlar Özeti"].items():
-            st.write(f"{yardim}: {tutar:.2f} TL")
-        
-        st.subheader("Matrahlar")
-        for matrah, tutar in sonuclar["Matrahlar"].items():
-            st.write(f"{matrah}: {tutar:.2f} TL")
 
-        st.subheader("Devlete Ödenenler")
-        for prim, tutar in sonuclar["Devlete Ödenenler"].items():
-            st.write(f"{prim}: {tutar:.2f} TL")
-            
-        st.subheader("Net Maaş")
-        st.write(f"Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL")
         
   # Hesapla butonu
 if st.button("Hesapla"):
