@@ -110,14 +110,11 @@ def hesapla():
         
         # Toplam Kazançlar
         toplam_kazanc = kazanclar_toplam + yardimlar
-
-        # SGK'da çocuk yardımı istisnası (en fazla 2 çocuk için)
-        sgk_cocuk_istisna = min(cocuk_sayisi, 2) * 520.11
-
+        
         if es_calisiyor == "Evet":
-                sgk_matrah = toplam_kazanc - ((sgk_cocuk_istisna + yol_yardimi) + (calisan_gun * 158))
+                sgk_matrah = toplam_kazanc - ((cocuk_yardimi + yol_yardimi) + (calisan_gun * 158))
         else:
-                sgk_matrah = toplam_kazanc - ((aile_yardimi + sgk_cocuk_istisna + yol_yardimi) + (calisan_gun * 158))
+                sgk_matrah = toplam_kazanc - ((aile_yardimi + cocuk_yardimi + yol_yardimi) + (calisan_gun * 158))
             
         # SGK ve İşsizlik Primi Hesaplama:
         sgk_primi = sgk_matrah * 0.14
