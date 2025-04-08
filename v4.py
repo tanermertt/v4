@@ -70,7 +70,7 @@ def hesapla():
         yemek_yardimi = calisan_gun * 330.98
         sosyal_yardim = 3846.71
         sorumluluk_zammi = 6525.78
-        yakacak_yardimi = 3309.77
+        yakacak_yardimi = 3309.76
         is_guclugu_primi = calisan_gun * 27.56
         ise_devam_tesvik_primi = (taban_yevmiyesi + kidem_zammi + imza_prim_miktar) * 2
 
@@ -183,7 +183,7 @@ def hesapla():
                 "İşsizlik Primi": isssizlik_primi,
                 "Gelir Vergisi": toplam_vergi,
                 "Damga Vergisi": damga_vergisi,
-                "Sendika Aidatı (Son Yevmiye)": son_yevmiyesi
+                "Sendika Aidatı": son_yevmiyesi
             }
         }
 
