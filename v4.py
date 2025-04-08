@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 # Başlık
 st.title("İzbeton A.Ş 2025 yılı Sözleşmenin ikinci Yılı Maaş Hesaplama Programı")
