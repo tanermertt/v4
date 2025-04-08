@@ -127,7 +127,7 @@ def hesapla():
         issizlik_primi = sgk_matrah * 0.01
 
         # Gelir Vergisi Hesaplama:
-        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + issizlik_primi + yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta + yemek_yardimi_gvi + engelli_indirimi ) 
+        gelir_vergisi_matrahi = toplam_kazanc - ( sgk_primi + issizlik_primi + yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta + yemek_yardimi_gvi + engelli_indirimi ) 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)
 
         kumulatif_matrah = kumulatif_matrah1 + gelir_vergisi_matrahi
