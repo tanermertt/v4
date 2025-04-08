@@ -184,7 +184,7 @@ def hesapla():
                 "Toplam Kazanç": toplam_kazanc,
                 "SGK Matrahı": sgk_matrah,
                 "Gelir Vergisi Matrahı": gelir_vergisi_matrahi,
-                "Damga Vergisi Matrahı": damga_vergisi_matrahi
+                "Damga Vergisi Matrahı": damga_vergisi_matrahi,
                 "Ayın Kümüle Vergi Matrahı": kumulatif_matrah
             },
             "Devlete Ödenenler": {
