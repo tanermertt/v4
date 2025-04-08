@@ -121,10 +121,10 @@ def hesapla():
             
         # SGK ve İşsizlik Primi Hesaplama:
         sgk_primi = sgk_matrah * 0.14
-        isssizlik_primi = sgk_matrah * 0.01
+        issizlik_primi = sgk_matrah * 0.01
 
         # Gelir Vergisi Hesaplama:
-        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - (yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta) - (calisan_gun * 264) - engelli_indirimi 
+        gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + issizlik_primi) - (yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta) - (calisan_gun * 264) - engelli_indirimi 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)
 
         kumulatif_matrah = kumulatif_matrah1 + gelir_vergisi_matrahi
@@ -166,7 +166,7 @@ def hesapla():
             damga_vergisi = 0
 
         # Net Maaş
-        devlete_odenen = sgk_primi + isssizlik_primi + toplam_vergi + damga_vergisi + son_yevmiyesi + yol_yardimi
+        devlete_odenen = sgk_primi + issizlik_primi + toplam_vergi + damga_vergisi + son_yevmiyesi + yol_yardimi
         net_maas = toplam_kazanc - devlete_odenen - ozel_kesinti
 
         return {
@@ -182,7 +182,7 @@ def hesapla():
             },
             "Devlete Ödenenler": {
                 "SGK Primi": sgk_primi,
-                "İşsizlik Primi": isssizlik_primi,
+                "İşsizlik Primi": issizlik_primi,
                 "Gelir Vergisi": toplam_vergi,
                 "Damga Vergisi": damga_vergisi,
                 "Sendika Aidatı": son_yevmiyesi
