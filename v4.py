@@ -27,7 +27,7 @@ yol_yardimi = st.number_input("Ulaşım Yardımı (TL):", min_value=0.0, value=0
 evlilik_var = st.selectbox("Evli misiniz?", ["Evet", "Hayır"])
 es_calisiyor = st.selectbox("Eşiniz Çalışıyor mu?", ["Hayır", "Evet"])
 cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evlilik_var == "Evet" else 0
-isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
+isveren_bes_sigorta = st.number_input("İşveren BES,Yaşam Sigorta (TL):", min_value=0.0, value=0.0)
 engelli_indirimi = st.selectbox("Engel İndirimi (TL):", [0, 2400, 5700, 9900])
 ozel_kesinti = st.number_input("ilaç , bağış , vb kesintiler (TL):", min_value=0.0, value=0.0)
 kumulatif_matrah1 = st.number_input("Önceki ayların Kümülatif Vergi Matrahı (TL):", min_value=0.0, value=0.0) 
