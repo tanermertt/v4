@@ -112,8 +112,8 @@ def hesapla():
         toplam_kazanc = kazanclar_toplam + yardimlar
         
         # SGK matrahı hesaplama (yemek istisnası günlük 158 TL)
-            yemek_istisna = calisan_gun * 158  # sadece istisna tutarı düşülür
-            sgk_istisna = yemek_istisna + yol_yardimi + cocuk_yardimi
+        yemek_istisna = calisan_gun * 158  # sadece istisna tutarı düşülür
+        sgk_istisna = yemek_istisna + yol_yardimi + cocuk_yardimi
                
         if es_calisiyor == "Evet":
                 sgk_matrah = toplam_kazanc - sgk_istisna
