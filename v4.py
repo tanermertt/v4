@@ -159,9 +159,9 @@ def hesapla():
             }
         ay_sayısı = ay_sirasi[ay_secimi]
         
-        toplam_vergi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - ( asgari_ucret_gv_istisna * ay_sayısı )
+        aylık_gelir_vergisi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - ( asgari_ucret_gv_istisna * ay_sayısı )
 
-        toplam_vergi = max(0, toplam_vergi)
+        aylık_gelir_vergisi = max(0, aylık_gelir_vergisi)
 
         # Damga Vergisi hesaplama
         damga_vergisi_yemek_istisna = calisan_gun * 264
@@ -172,7 +172,7 @@ def hesapla():
             damga_vergisi = 0
 
         # Net Maaş
-        devlete_odenen_ucretler = sgk_primi + issizlik_primi + toplam_vergi + damga_vergisi + yol_yardimi
+        devlete_odenen_ucretler = sgk_primi + issizlik_primi + aylık_gelir_vergisi + damga_vergisi + yol_yardimi
         net_maas = toplam_kazanc - devlete_odenen_ucretler - son_yevmiyesi -ozel_kesinti
 
         return {
@@ -189,7 +189,7 @@ def hesapla():
             "Devlete Ödenenler": {
                 "SGK Primi": sgk_primi,
                 "İşsizlik Primi": issizlik_primi,
-                "Gelir Vergisi": toplam_vergi,
+                "Gelir Vergisi": aylık_gelir_vergisi,
                 "Damga Vergisi": damga_vergisi,
                 "Sendika Aidatı": son_yevmiyesi
             }
