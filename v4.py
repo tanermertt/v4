@@ -147,7 +147,11 @@ def hesapla():
             istisna = 4257.57
         else:
             istisna = 4420.80
-
+        ay_sirasi = {
+            "Ocak": 1, "Şubat": 2, "Mart": 3, "Nisan": 4, "Mayıs": 5, "Haziran": 6,
+            "Temmuz": 7, "Ağustos": 8, "Eylül": 9, "Ekim": 10, "Kasım": 11, "Aralık": 12
+            }
+        ay_sayısı = ay_sirasi[ay_secimi]
         
         toplam_vergi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - istisna * ay_sayısı
 
