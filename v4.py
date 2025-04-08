@@ -212,5 +212,7 @@ if st.button("Hesapla"):
         st.subheader("Net Maaş")
         st.write(f"Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL")  
         
-          
+  import pandas as pd
+    df_yardimlar = pd.DataFrame.from_dict(sonuclar["Yardımlar Özeti"], orient='index', columns=["Tutar (TL)"])
+    st.dataframe(df_yardimlar.style.format("{:.2f}"))        
       
