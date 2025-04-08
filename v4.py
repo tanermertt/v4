@@ -162,7 +162,7 @@ def hesapla():
         aylık_gelir_vergisi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - asgari_ucret_gv_istisna * ay_sayısı
 
         aylık_gelir_vergisi = max(0, aylık_gelir_vergisi)
-
+        Ayın Kümüle Vergi Matrahı = kumulatif_matrah - isveren_bes_sigorta
         # Damga Vergisi hesaplama
         damga_vergisi_yemek_istisna = calisan_gun * 264
         damga_vergisi_asgari_ucret_istisna = 197.38
@@ -185,7 +185,7 @@ def hesapla():
                 "SGK Matrahı": sgk_matrah,
                 "Gelir Vergisi Matrahı": gelir_vergisi_matrahi,
                 "Damga Vergisi Matrahı": damga_vergisi_matrahi,
-                "Ayın Kümüle Vergi Matrahı": kumulatif_matrah
+                "Ayın Kümüle Vergi Matrahı": Ayın Kümüle Vergi Matrahı
             },
             "Devlete Ödenenler": {
                 "SGK Primi": sgk_primi,
