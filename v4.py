@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Başlık
-st.title("Maaş Hesaplama ibne suat Programı 01/03/2025-31/08/2025")
+st.title("Maaş Hesaplama Programı 01/03/2025-31/08/2025 hakan@taner")
 
 # Aylar
 ay_gunleri = {
