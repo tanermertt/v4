@@ -212,21 +212,5 @@ if st.button("Hesapla"):
         st.subheader("Net Maaş")
         st.write(f"Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL")  
         
-          # Hesapla butonu
-    if st.button("Hesapla"):
-        sonuclar = hesapla()
-    if sonuclar:
-        with st.expander("Yardımlar Özeti"):
-            for yardim, tutar in sonuclar["Yardımlar Özeti"].items():
-                st.write(f"{yardim}: {tutar:.2f} TL")
-
-        with st.expander("Matrahlar"):
-            for matrah, tutar in sonuclar["Matrahlar"].items():
-                st.write(f"{matrah}: {tutar:.2f} TL")
-
-        with st.expander("Devlete Ödenenler"):
-            for prim, tutar in sonuclar["Devlete Ödenenler"].items():
-                st.write(f"{prim}: {tutar:.2f} TL")
-
-        st.markdown(f"<h3 style='color:red;'>Bankaya Yatan Net Maaş: {sonuclar['Net Maaş']:.2f} TL</h3>", unsafe_allow_html=True)
+          
       
