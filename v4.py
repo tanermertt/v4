@@ -159,7 +159,7 @@ def hesapla():
             }
         ay_sayısı = ay_sirasi[ay_secimi]
         
-        aylık_gelir_vergisi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - ( asgari_ucret_gv_istisna * ay_sayısı )
+        aylık_gelir_vergisi = gelir_vergisi_hesapla(kumulatif_matrah) - kumule_gelir_vergisi - asgari_ucret_gv_istisna * ay_sayısı
 
         aylık_gelir_vergisi = max(0, aylık_gelir_vergisi)
 
