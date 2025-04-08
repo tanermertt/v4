@@ -30,7 +30,7 @@ cocuk_sayisi = st.number_input("Çocuk Sayısı:", min_value=0, value=0) if evli
 isveren_bes_sigorta = st.number_input("İşveren BES Sigorta (TL):", min_value=0.0, value=0.0)
 engelli_indirimi = st.selectbox("Engel İndirimi (TL):", [0, 2400, 5700, 9900])
 ozel_kesinti = st.number_input("ilaç , bağış , vb kesintiler (TL):", min_value=0.0, value=0.0)
-kumulatif_matrah = st.number_input("Önceki ayların Kümülatif Vergi Matrahı (TL):", min_value=0.0, value=0.0) 
+kumulatif_matrah1 = st.number_input("Önceki ayların Kümülatif Vergi Matrahı (TL):", min_value=0.0, value=0.0) 
 kumule_gelir_vergisi = st.number_input("Önceki ayların ödenen Kümülatif Gelir Vergisi (TL):", min_value=0.0, value=0.0)
 
 # Hesaplama Fonksiyonu
@@ -125,6 +125,8 @@ def hesapla():
         gelir_vergisi_matrahi = toplam_kazanc - (sgk_primi + isssizlik_primi) - (yol_yardimi + cocuk_yardimi + son_yevmiyesi + isveren_bes_sigorta) - (calisan_gun * 264) - engelli_indirimi 
         gelir_vergisi_matrahi = max(0, gelir_vergisi_matrahi)
 
+        kumulatif_matrah = kumulatif_matrah1 + gelir_vergisi_matrahi
+        
         def gelir_vergisi_hesapla(kumulatif_matrah):
             if kumulatif_matrah <= 158000:
                 gelir_vergisi = kumulatif_matrah * 0.15
