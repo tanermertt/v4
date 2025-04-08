@@ -195,9 +195,9 @@ def hesapla():
 
 
         
-  # Hesapla butonu
-if st.button("Hesapla"):
-    sonuclar = hesapla()
+      # Hesapla butonu
+    if st.button("Hesapla"):
+        sonuclar = hesapla()
     if sonuclar:
         with st.expander("Yardımlar Özeti"):
             for yardim, tutar in sonuclar["Yardımlar Özeti"].items():
