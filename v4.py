@@ -13,7 +13,7 @@ ay_gunleri = {
 grup = st.selectbox("Grup:", ["A", "B", "C", "D"])
 vardiya = st.selectbox("Vardiya Türü:", ["Tekli Vardiya", "İkili Vardiya", "Üçlü Vardiya"])
 ay_secimi = st.selectbox("Ay Seçimi:", list(ay_gunleri.keys()))
-kidem_yili = st.slider("Kıdem Yılı (0-30):", 0, 30, 25)
+kidem_yili = st.slider("Kıdem Yılı (0-35):", 0, 35, 25)
 imza_primi_yuzdesi = st.selectbox("Üretime Dayalı Risk Primi,Hakediş Primi (%):", [0, 3, 4, 6])
 calisan_gun = st.number_input("Çalışılan Günler:", min_value=0, max_value=31, value=20)
 tatil_gun = st.number_input("Çalışılmayan Günler:", min_value=0, max_value=31, value=10)
